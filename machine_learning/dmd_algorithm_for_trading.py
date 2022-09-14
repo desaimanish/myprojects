@@ -2,7 +2,7 @@
 # *********************************************************************************************************************************************************************
 #%% ***IMPORTANT NOTICE***
 #%% This is just a basic implimentation of DMD. The developed sparsiity promoted DMD and iterative DMD are more efficient to use for stoct market prediction.
-# as the code is confidential it is not shown in public, but if you need the code how it works mail me Mail ID: desai.manish736@gmail.com
+# as the code is confidential(will be uploaded once the research work is published) it is not shown in public, but if you need the code how it works mail me Mail ID: desai.manish736@gmail.com
 # *********************************************************************************************************************************************************************
 
 
