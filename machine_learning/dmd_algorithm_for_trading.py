@@ -1,3 +1,12 @@
+
+# *********************************************************************************************************************************************************************
+#%% ***IMPORTANT NOTICE***
+#%% This is just a basic implimentation of DMD. The developed sparsiity promoted DMD and iterative DMD are more efficient to use for stoct market prediction.
+# as the code is confidential it is not shown in public, but if you need the code how it works mail me Mail ID: desai.manish736@gmail.com
+# *********************************************************************************************************************************************************************
+
+
+
 import numpy as np
 from scipy.io import FortranFile
 from os import listdir
@@ -7,7 +16,7 @@ size = len(listdir(g))   # finding out how many files are present
 m= np.zeros((256*256*256,size)) #initializing the variable m which stores the domain in the form  of arrays
 n = 0 # counter
 
-#%% Loop to read the data from the binary data
+#%% Loop to read the data from the binary data(this may change based on the dataset you are reading)
 for i in listdir(g):    
     f = FortranFile(g+"/" + i)
     data = f.read_record(dtype=np.int32) 
@@ -21,6 +30,7 @@ for i in listdir(g):
     m[:,n]=data6
     n = n+1
     break
+
 #%% executing the SVD
 x = m[:,:-1]  
 xd = m[:,1:]
@@ -47,48 +57,3 @@ del(data6,u,v)
 #%%
 
 
-c1 = np.zeros(((256,256,256)))
-c2 = np.zeros(((256,256,256)))
-c3 = np.zeros(((256,256,256)))
-for k in range(256):
-  for j in range(256):
-    for i in range(256):
-      c1[i,j,k] = data3[i]
-      c2[i,j,k] = data4[j]
-      c3[i,j,k] = data5[k]
-
-n= 0
-d= np.zeros((256*256*256,3))
-for k in range(256):
-  for j in range(256):
-    for i in range(256):
-      d[n,0] =  c1[i,j,k]
-      n = n+1
-n= 0
-
-for k in range(256):
-  for j in range(256):
-    for i in range(256):
-      d[n,1] =  c2[i,j,k]
-      n = n+1
-n= 0
-
-for k in range(256):
-  for j in range(256):
-    for i in range(256):
-      d[n,2] =  c3[i,j,k]
-      n = n+1
-
-#%%
-
-from mpl_toolkits.mplot3d import Axes3D
-import matplotlib.pyplot as plt
-import numpy as np
-for i in range(r):
-    fig = plt.figure()
-    ax = fig.add_subplot( projection='2d')
-    
-    
-    img = ax.scatter(d[:,0], d[:,1] c=rphi[:,i], cmap=plt.jet())
-    fig.colorbar(img)
-    plt.show()
